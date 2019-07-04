@@ -27,8 +27,8 @@ public class UsuarioServiceImpl implements IUsuarioService{
     }
 
     @Override
-    public void save(UsuarioEntity cliente) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void save(UsuarioEntity usuario) {
+      this.repository.save(usuario);
     }
 
     @Override
@@ -37,8 +37,8 @@ public class UsuarioServiceImpl implements IUsuarioService{
     }
 
     @Override
-    public void delete(UsuarioEntity cliente) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void delete(UsuarioEntity usuario) {
+       this.repository.delete(usuario);
     }
 
     @Override
