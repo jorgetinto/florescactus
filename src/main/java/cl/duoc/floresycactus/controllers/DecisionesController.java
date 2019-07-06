@@ -8,7 +8,6 @@ package cl.duoc.floresycactus.controllers;
 
 import cl.duoc.floresycactus.entities.DecisionEntity;
 import cl.duoc.floresycactus.services.IDecisionService;
-import com.fasterxml.jackson.databind.JsonNode;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -38,7 +37,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api")
 public class DecisionesController {
     
-    private static final Logger logger = LoggerFactory.getLogger(DecisionesController.class);
+    private static final Logger logger = LoggerFactory.getLogger(DecisionesController.class);    
     
     @Autowired
     private IDecisionService service;
@@ -160,10 +159,17 @@ public class DecisionesController {
             }
     }   
     
-    @PostMapping("/decisiones/{humedad}/{temperatura}")
-    public String createDecisionesPorParametros(@PathVariable Double humedad, @PathVariable Double temperatura) {
-            String temporada = this.service.obtenerTemporada();
-            return temporada;
-    }  
-
+    @PostMapping("/decisiones/{humedad}/{temperatura}/{idMuro}")
+    public String createDecisionesPorParametros(@PathVariable Double humedad, @PathVariable Double temperatura, @PathVariable int idMuro) throws Exception {
+        
+        String comuna ="Santiago";
+        String APPID = "1bb91d7566093e90995276f5a751e2b2"; 
+        String.format("http://api.openweathermap.org/data/2.5/weather?q=%s,cl&APPID=%s", comuna, APPID);       
+     
+               
+        
+        String temporada = this.service.obtenerTemporada();
+            
+          return temporada;
+    } 
 }
