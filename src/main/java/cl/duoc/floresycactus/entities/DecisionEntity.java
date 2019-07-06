@@ -21,6 +21,7 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -65,6 +66,11 @@ public class DecisionEntity implements Serializable {
     @JoinColumn(name = "muro_Id", referencedColumnName = "Id", nullable = false)
     @ManyToOne(optional = false, fetch = FetchType.EAGER)
     private MuroEntity muroId;
+    
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "estado", nullable = false)
+    private boolean estado;
 
     public DecisionEntity() {
     }
@@ -127,6 +133,14 @@ public class DecisionEntity implements Serializable {
 
     public void setMuroId(MuroEntity muroId) {
         this.muroId = muroId;
+    }
+    
+    public boolean getEstado() {
+        return estado;
+    }
+
+    public void setEstado(boolean estado) {
+        this.estado = estado;
     }
 
     @Override

@@ -58,6 +58,10 @@ public class MuroEntity implements Serializable {
     @Column(name = "descripcion", length = 60)
     private String descripcion;
     
+    @Size(max = 60)
+    @Column(name = "ciudad", length = 60)
+    private String ciudad;
+    
     @Column(name = "tipo_intalacion")
     private Boolean tipoIntalacion;
     
@@ -116,6 +120,14 @@ public class MuroEntity implements Serializable {
 
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
+    }
+    
+    public String getCiudad() {
+        return ciudad;
+    }
+
+    public void setCiudad(String ciudad) {
+        this.ciudad = ciudad;
     }
 
     public Boolean getTipoIntalacion() {

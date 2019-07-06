@@ -69,6 +69,7 @@ CREATE TABLE IF NOT EXISTS `florescactusdatabase`.`muro` (
   `Id` BIGINT(20) NOT NULL  AUTO_INCREMENT,
   `nombre` VARCHAR(45) NULL DEFAULT NULL,
   `descripcion` VARCHAR(60) NULL DEFAULT NULL,
+  `ciudad` VARCHAR(60) NULL DEFAULT NULL, 
   `tipo_intalacion` TINYINT(1) NULL DEFAULT NULL,
   `estado` TINYINT(1) NULL DEFAULT NULL,
   `fecha_creacion` DATE NULL DEFAULT NULL,
@@ -99,6 +100,7 @@ CREATE TABLE IF NOT EXISTS `florescactusdatabase`.`decisiones` (
   `pronostico` VARCHAR(45) NULL DEFAULT NULL,
   `fecha_creacion` DATETIME NULL,
   `muro_Id` BIGINT(20) NOT NULL,
+  `estado` TINYINT(1) NULL DEFAULT NULL,
   PRIMARY KEY (`Id`),
   INDEX `fk_Decisiones_muro1_idx` (`muro_Id` ASC) VISIBLE,
   CONSTRAINT `fk_Decisiones_muro1`

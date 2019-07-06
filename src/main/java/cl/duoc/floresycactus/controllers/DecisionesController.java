@@ -7,7 +7,9 @@ package cl.duoc.floresycactus.controllers;
 
 
 import cl.duoc.floresycactus.entities.DecisionEntity;
+import cl.duoc.floresycactus.entities.MuroEntity;
 import cl.duoc.floresycactus.services.IDecisionService;
+import cl.duoc.floresycactus.services.IMuroService;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -41,6 +43,9 @@ public class DecisionesController {
     
     @Autowired
     private IDecisionService service;
+    
+    @Autowired
+    private IMuroService serviceMuro;
             
     @GetMapping("/decisiones")
     public List<DecisionEntity> getAllDecisiones()
@@ -83,8 +88,7 @@ public class DecisionesController {
                                                         .collect(Collectors.toList());
                             response.put("errors", errors);
                             return new ResponseEntity<Map<String, Object>>(response, HttpStatus.BAD_REQUEST);
-                    }
-                
+                    }                    
                     decisionNew = this.service.save(decision);
                     
             } catch(DataAccessException e) {
@@ -99,7 +103,7 @@ public class DecisionesController {
     }   
     
     @PutMapping("/decisiones/{id}")
-    public ResponseEntity<?> updateCliente(@Valid @RequestBody DecisionEntity decision, BindingResult result, @PathVariable Long id) {
+    public ResponseEntity<?> updateDecisiones(@Valid @RequestBody DecisionEntity decision, BindingResult result, @PathVariable Long id) {
 
             DecisionEntity decisionActual = this.service.findById(id);
             DecisionEntity decisionUpdated = null;
@@ -127,6 +131,7 @@ public class DecisionesController {
                     decisionActual.setTemporada(decision.getTemporada());
                     decisionActual.setPronostico(decision.getPronostico());
                     decisionActual.setFechaCreacion(decision.getFechaCreacion());
+                    decisionActual.setEstado(decision.getEstado());
                     decisionUpdated = this.service.save(decisionActual);
                     
                     response.put("mensaje", "La decision ha sido actualizado con éxito!");
@@ -160,14 +165,16 @@ public class DecisionesController {
     }   
     
     @PostMapping("/decisiones/{humedad}/{temperatura}/{idMuro}")
-    public String createDecisionesPorParametros(@PathVariable Double humedad, @PathVariable Double temperatura, @PathVariable int idMuro) throws Exception {
-        
-        String comuna ="Santiago";
-        String APPID = "1bb91d7566093e90995276f5a751e2b2"; 
-        String.format("http://api.openweathermap.org/data/2.5/weather?q=%s,cl&APPID=%s", comuna, APPID); 
-        
-        String temporada = this.service.obtenerTemporada();
+    public Boolean createDecisionesPorParametros(@PathVariable Double humedad, @PathVariable Double temperatura, @PathVariable Long idMuro) throws Exception { 
+                
+//        String APPID = "1bb91d7566093e90995276f5a751e2b2"; 
+//        String.format("http://api.openweathermap.org/data/2.5/weather?q=%s,cl&APPID=%s", ciudad, APPID); 
             
-          return temporada;
-    } 
+        MuroEntity muro = this.serviceMuro.findById(idMuro);  
+        String ciudad = muro.getCiudad();
+        String pronostico = "despejado";
+
+          Boolean resultado = this.service.tomarDecisionRiego(humedad, temperatura, pronostico, muro);
+          return resultado;
+    }    
 }

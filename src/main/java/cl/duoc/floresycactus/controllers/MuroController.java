@@ -123,6 +123,7 @@ public class MuroController {
                     
                     muroActual.setNombre(muro.getNombre());
                     muroActual.setDescripcion(muro.getDescripcion());
+                    muroActual.setCiudad(muro.getCiudad());
                     muroActual.setTipoIntalacion(muro.getTipoIntalacion());
                     muroActual.setEstado(muro.getEstado());
                     muroUpdated = this.service.save(muroActual);

@@ -17,11 +17,11 @@ INSERT INTO clientes(nombre, razon_social, comuna, estado) VALUES ('Soprole', 'S
 INSERT INTO clientes(nombre, razon_social, comuna, estado) VALUES ('Mall Plaza Oeste', 'Mall Plaza S.A.', 'Santiago', 1);
 INSERT INTO clientes(nombre, razon_social, comuna, estado) VALUES ('Mall Plaza Norte', 'Mall Plaza S.A.', 'Santiago', 1);
 
-INSERT INTO muro(nombre,descripcion, tipo_intalacion, estado, fecha_creacion,usuarios_id,clientes_Id) VALUES('Muro Sorpole 01', 'Muro puerta sur', 1, 1, '2019-06-29', 1, 1);
+INSERT INTO muro(nombre, descripcion, ciudad, tipo_intalacion, estado, fecha_creacion, usuarios_id, clientes_Id) VALUES('Muro Sorpole 01', 'Muro puerta sur', 'Santiago', 1,1, '2019-06-29', 1, 1);
 
 INSERT INTO horarios_riego (horario, estado,muro_id) VALUES('08:00',1,1);
 INSERT INTO horarios_riego (horario, estado,muro_id) VALUES('15:00',1,1);
 INSERT INTO horarios_riego (horario, estado,muro_id) VALUES('23:00',1,1);
 
-INSERT INTO decisiones (humedad,temperatura,temporada,pronostico,fecha_creacion, muro_Id) VALUES (65.10, 18.00, 'Invierno', '21.00 - nublado', '2019-06-29 08:01:00',1);
-INSERT INTO decisiones (humedad,temperatura,temporada,pronostico,fecha_creacion, muro_Id) VALUES ( 80.40, 14.00, 'Invierno', '21.00 - nublado', '2019-06-29 15:01:00',1);
+INSERT INTO decisiones (humedad,temperatura,temporada,pronostico,fecha_creacion, muro_Id, estado) VALUES (65.10, 18.00, 'Invierno', '21.00 - nublado', '2019-06-29 08:01:00',1, 1);
+INSERT INTO decisiones (humedad,temperatura,temporada,pronostico,fecha_creacion, muro_Id, estado) VALUES ( 80.40, 14.00, 'Invierno', '21.00 - nublado', '2019-06-29 15:01:00',1, 1);

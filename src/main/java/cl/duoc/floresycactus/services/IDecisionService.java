@@ -6,6 +6,7 @@
 package cl.duoc.floresycactus.services;
 
 import cl.duoc.floresycactus.entities.DecisionEntity;
+import cl.duoc.floresycactus.entities.MuroEntity;
 import java.util.List;
 
 /**
@@ -23,4 +24,6 @@ public interface IDecisionService {
     void delete(DecisionEntity desicion);  
     
     String obtenerTemporada();
+    
+    Boolean tomarDecisionRiego(Double humedad, Double temperatura, String pronostico, MuroEntity muro);
 }
