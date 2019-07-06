@@ -164,9 +164,7 @@ public class DecisionesController {
         
         String comuna ="Santiago";
         String APPID = "1bb91d7566093e90995276f5a751e2b2"; 
-        String.format("http://api.openweathermap.org/data/2.5/weather?q=%s,cl&APPID=%s", comuna, APPID);       
-     
-               
+        String.format("http://api.openweathermap.org/data/2.5/weather?q=%s,cl&APPID=%s", comuna, APPID); 
         
         String temporada = this.service.obtenerTemporada();
             
