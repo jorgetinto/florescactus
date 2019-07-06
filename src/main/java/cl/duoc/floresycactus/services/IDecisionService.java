@@ -25,5 +25,9 @@ public interface IDecisionService {
     
     String obtenerTemporada();
     
+    String obtenerHoraActual();
+    
+    DecisionEntity NuevoObjeto(Double humedad, Double temperatura,String temporada,String pronostico, MuroEntity muro);
+    
     Boolean tomarDecisionRiego(Double humedad, Double temperatura, String pronostico, MuroEntity muro);
 }

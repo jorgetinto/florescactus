@@ -89,6 +89,7 @@ public class DecisionServiceImpl implements IDecisionService{
         return temporada; 
     }
     
+    @Override
     public String obtenerHoraActual(){
         LocalDateTime locaDate = LocalDateTime.now();
         return locaDate.getHour() + ":" + locaDate.getMinute();
